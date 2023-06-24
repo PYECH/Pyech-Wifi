@@ -2,8 +2,8 @@ import subprocess
 import tkinter as tk
 import os
 
-nombre_archivo_png = "[PON TU IMAGEN]"
-nombre_archivo_ico = "[PON TU ICONO]"
+nombre_archivo_png = "[tu Imagen].png"
+nombre_archivo_ico = "[tu Icono].ico"
 
 directorio_script = os.path.dirname(os.path.abspath(__file__))
 
@@ -12,19 +12,16 @@ ruta_archivo_png = os.path.join(directorio_script, nombre_archivo_png) if nombre
 ruta_archivo_ico = os.path.join(directorio_script, nombre_archivo_ico) if nombre_archivo_ico else None
 
 ventana = tk.Tk()
-ventana.title("[TITULO DE LA VENTANA]")
-ventana.geometry("400x300")
+ventana.title("Ver Wifi PyEndrechou")
+ventana.geometry("400x350")
 
 if ruta_archivo_png and os.path.isfile(ruta_archivo_png):
-
     imagen_fondo = tk.PhotoImage(file=ruta_archivo_png)
     imagen_fondo = imagen_fondo.subsample(2)
-
     etiqueta_fondo = tk.Label(ventana, image=imagen_fondo)
     etiqueta_fondo.place(x=0, y=0, relwidth=1, relheight=1)
 
 if ruta_archivo_ico and os.path.isfile(ruta_archivo_ico):
-
     ventana.iconbitmap(ruta_archivo_ico)
 
 cuadro_detalles_wifi = tk.Text(ventana, bg="black", fg="green", font=("Courier", 12))
@@ -61,6 +58,9 @@ seccion_adicional = """  , __        ___       _
   |     \_/|/\___/\___/|   |_/
           /|                  
           \|                """
+
+etiqueta_adicional = tk.Label(ventana, text="TK : PyEndrechou", font=("Glitch Goblin", 50), bg="black", fg="green")
+etiqueta_adicional.pack(pady=10)
 
 cuadro_detalles_wifi.insert(tk.END, seccion_adicional)
 
